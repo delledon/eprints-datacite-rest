@@ -1,0 +1,12 @@
+EPrints DataCite REST
+
+Derivative work based on the EPrints User Group DataCiteDoi plugin.
+Installed upstream package metadata identifies Rory McNicholl
+(repositories@ulcc.ac.uk) as creator and points to:
+https://github.com/eprintsug/DataCiteDoi
+
+Upstream license: GNU GPL version 3. See LICENSE.
+
+The REST API, authenticated preflight, Draft/Findable workflow, write gates,
+duplicate barriers, semantic update comparison and related safety controls
+were substantially developed and generalized in 2026.

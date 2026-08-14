@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE phrases SYSTEM "entities.dtd">
+
+<epp:phrases
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:epp="http://eprints.org/ep3/phrase"
+    xmlns:epc="http://eprints.org/ep3/control">
+
+    <epp:phrase id="Plugin/Screen/EPrint/Staff/DataCiteREST:title">DataCite REST</epp:phrase>
+
+    <epp:phrase id="Plugin/Screen/EPrint/Staff/DataCiteREST:action:datacite_preflight">DataCite preflight</epp:phrase>
+
+        <epp:phrase id="Plugin/Screen/EPrint/Staff/DataCiteREST:action:datacite_preflight:title">DataCite preflight</epp:phrase>
+
+<epp:phrase id="Plugin/Screen/EPrint/Staff/DataCiteREST:action:datacite_preflight:description">Check the DataCite status and DOI eligibility of this item. This check does not create, publish or modify a DOI.</epp:phrase>
+
+
+    <epp:phrase id="Plugin/Screen/EPrint/Staff/DataCiteREST:action:datacite_prepare_draft">Prepare DataCite Draft</epp:phrase>
+
+    <epp:phrase id="Plugin/Screen/EPrint/Staff/DataCiteREST:action:datacite_prepare_draft:title">Prepare DataCite Draft</epp:phrase>
+
+    <epp:phrase id="Plugin/Screen/EPrint/Staff/DataCiteREST:action:datacite_prepare_draft:description">Prepare and verify the DataCite Draft payload for this item. No DOI is created or modified.</epp:phrase>
+
+    <epp:phrase id="Plugin/Screen/EPrint/Staff/DataCiteREST:create_draft_button">Create DataCite Draft</epp:phrase>
+
+
+    <epp:phrase id="Plugin/Screen/EPrint/Staff/DataCiteREST:action:datacite_prepare_publish">Publish DataCite DOI</epp:phrase>
+
+    <epp:phrase id="Plugin/Screen/EPrint/Staff/DataCiteREST:action:datacite_prepare_publish:title">Publish DataCite DOI</epp:phrase>
+
+    <epp:phrase id="Plugin/Screen/EPrint/Staff/DataCiteREST:action:datacite_prepare_publish:description">Verify the DataCite Draft and prepare its controlled publication as Findable.</epp:phrase>
+
+    <epp:phrase id="Plugin/Screen/EPrint/Staff/DataCiteREST:publish_findable_button">Publish as Findable</epp:phrase>
+
+
+    <epp:phrase id="Plugin/Screen/EPrint/Staff/DataCiteREST:action:datacite_prepare_update_url">Update DataCite URL</epp:phrase>
+
+    <epp:phrase id="Plugin/Screen/EPrint/Staff/DataCiteREST:action:datacite_prepare_update_url:title">Update DataCite URL</epp:phrase>
+
+    <epp:phrase id="Plugin/Screen/EPrint/Staff/DataCiteREST:action:datacite_prepare_update_url:description">Compare the repository with DataCite and prepare a controlled HTTP-to-HTTPS landing URL update.</epp:phrase>
+
+    <epp:phrase id="Plugin/Screen/EPrint/Staff/DataCiteREST:update_url_https_button">Update URL to HTTPS</epp:phrase>
+
+</epp:phrases>

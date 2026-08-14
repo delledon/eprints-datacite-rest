@@ -1,0 +1,13 @@
+*.key
+*.pem
+*.secret
+.env
+.env.*
+credentials/
+_source_snapshot/
+production-snapshot-*
+*.tar.gz
+*.log
+*.tmp
+*~
+.DS_Store
