@@ -34,12 +34,18 @@ read the file. Never make the credential world-readable.
 ## First enablement sequence
 
 1. configure with all automatic minting disabled;
-2. validate the metadata exporter locally;
-3. run authenticated read-only preflight;
-4. verify CLI write denial;
-5. expose Staff Screen preview actions;
-6. create one Draft test DOI under an intended production namespace;
-7. independently GET and verify `draft`;
-8. publish explicitly and independently verify `findable`;
-9. verify local persistence occurred only after Findable;
-10. verify a second update preview returns `UPDATE_NOOP`.
+2. leave `web_writes_enabled = 0`;
+3. validate the metadata exporter locally;
+4. run authenticated read-only preflight;
+5. verify CLI write denial;
+6. expose and test Staff Screen preflight/preview actions while web writes
+   remain disabled;
+7. verify all three Staff Screen write actions remain denied with
+   `web_writes_enabled = 0`;
+8. only after successful read-only validation, set
+   `web_writes_enabled = 1` for the controlled write test;
+9. create one Draft test DOI under an intended production namespace;
+10. independently GET and verify `draft`;
+11. publish explicitly and independently verify `findable`;
+12. verify local persistence occurred only after Findable;
+13. verify a second update preview returns `UPDATE_NOOP`.

@@ -56,6 +56,16 @@ $c->{datacitedoi}{write_userids} = {
     1001 => 1,
 };
 
+# Global fail-closed gate for DataCite writes from the web Screen.
+#
+# 0 = preflight and previews only.
+# 1 = permit web write actions for users explicitly listed above.
+#
+# Even when enabled, the Event plugin independently repeats its
+# authenticated-user and DataCite safety checks immediately before
+# every remote write.
+$c->{datacitedoi}{web_writes_enabled} = 0;
+
 # Fields containing historical/external identifiers. Any DOI-like value in
 # one of these fields is a duplicate barrier.
 $c->{datacitedoi}{duplicate_barrier_fields} = [ "id_number" ];

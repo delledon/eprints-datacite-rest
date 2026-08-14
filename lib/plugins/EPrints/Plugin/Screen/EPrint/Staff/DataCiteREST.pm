@@ -103,6 +103,33 @@ sub _current_user_allowed
 
 
 ############################################################
+# Global web-write gate.
+#
+# Fail closed:
+#   - missing/false web_writes_enabled => read-only web Screen;
+#   - true web_writes_enabled          => write actions may proceed,
+#     but only for explicit write_userids and subject to the
+#     independent Event hard gate.
+############################################################
+
+sub _web_writes_enabled
+{
+    my( $self ) = @_;
+
+    my $repository =
+        $self->{repository};
+
+    return 0
+        unless defined $repository;
+
+    return $repository->get_conf(
+        "datacitedoi",
+        "web_writes_enabled"
+    ) ? 1 : 0;
+}
+
+
+############################################################
 # Screen visibility.
 ############################################################
 
@@ -423,6 +450,9 @@ sub allow_datacite_update_url_https
 
     return 0
         unless $self->_current_user_allowed();
+
+    return 0
+        unless $self->_web_writes_enabled();
 
     return 0
         unless defined
@@ -769,6 +799,24 @@ sub action_datacite_update_url_https
         return undef;
     }
 
+    unless(
+           $self->_current_user_allowed()
+        && $self->_web_writes_enabled()
+    )
+    {
+        $self->{processor}->add_message(
+            "error",
+            $session->make_text(
+                "DataCite REST web write denied by Screen policy."
+            )
+        );
+
+        $self->{processor}->{screenid} =
+            "EPrint::View";
+
+        return undef;
+    }
+
     my $event =
         $repository->plugin(
             "Event::DataCiteEventREST"
@@ -892,6 +940,9 @@ sub allow_datacite_publish_findable
 
     return 0
         unless $self->_current_user_allowed();
+
+    return 0
+        unless $self->_web_writes_enabled();
 
     return 0
         unless defined
@@ -1375,6 +1426,24 @@ sub action_datacite_publish_findable
         return undef;
     }
 
+    unless(
+           $self->_current_user_allowed()
+        && $self->_web_writes_enabled()
+    )
+    {
+        $self->{processor}->add_message(
+            "error",
+            $session->make_text(
+                "DataCite REST web write denied by Screen policy."
+            )
+        );
+
+        $self->{processor}->{screenid} =
+            "EPrint::View";
+
+        return undef;
+    }
+
     my $event =
         $repository->plugin(
             "Event::DataCiteEventREST"
@@ -1500,6 +1569,9 @@ sub allow_datacite_create_draft
         unless $self->_current_user_allowed();
 
     return 0
+        unless $self->_web_writes_enabled();
+
+    return 0
         unless defined
             $self->{processor}->{eprint};
 
@@ -1587,6 +1659,24 @@ sub action_datacite_create_draft
         && defined $eprint
     )
     {
+        return undef;
+    }
+
+    unless(
+           $self->_current_user_allowed()
+        && $self->_web_writes_enabled()
+    )
+    {
+        $self->{processor}->add_message(
+            "error",
+            $session->make_text(
+                "DataCite REST web write denied by Screen policy."
+            )
+        );
+
+        $self->{processor}->{screenid} =
+            "EPrint::View";
+
         return undef;
     }
 

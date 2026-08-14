@@ -6,6 +6,21 @@ Write authorization comes only from `Repository->current_user()`. A caller may
 not supply an acting userid. CLI calls therefore fail before credentials are
 resolved.
 
+## Fail-closed Staff Screen
+
+Remote writes from the Staff Screen require two independent local conditions:
+
+1. the authenticated EPrints userid is explicitly present in
+   `datacitedoi.write_userids`;
+2. `datacitedoi.web_writes_enabled` is explicitly true.
+
+The default example configuration sets `web_writes_enabled = 0`. A missing or
+false setting therefore leaves the Staff Screen in preflight/preview-only mode.
+
+The Screen repeats this policy both in its `allow_*` methods and inside each
+write `action_*`. The Event layer then independently applies its own hard
+authenticated-user gate and fresh DataCite checks before a remote request.
+
 ## Credentials
 
 Use a dedicated repository API-key file outside committed configuration. The

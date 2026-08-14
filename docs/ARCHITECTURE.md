@@ -6,7 +6,20 @@
 2. **Authenticated preflight** — Member API GET, ownership/state/schema checks.
 3. **Exporter** — deterministic XML for an explicit DOI; never mints.
 4. **Event write layer** — repeats all safety checks and performs exactly one write.
-5. **Staff Screen** — preview and explicit second-step write actions.
+5. **Staff Screen** — read-only preflight/preview by default; explicit
+   second-step write actions are additionally gated by
+   `web_writes_enabled = 1`.
+
+## Web write gating
+
+The Staff Screen is fail-closed. With `web_writes_enabled` absent or false,
+preflight and preview actions remain available to explicitly allowlisted users,
+but `CREATE_DRAFT`, `PUBLISH_FINDABLE`, and `UPDATE_URL_HTTPS` are denied.
+
+When web writes are explicitly enabled, the Screen checks both the current-user
+allowlist and the global write gate in its permission methods and again inside
+the write actions. The Event layer independently repeats its authenticated-user
+and DataCite safety checks immediately before any remote write.
 
 ## Creation
 

@@ -24,6 +24,8 @@ REST workflow:
 - local DOI persistence only after remote verification;
 - duplicate barriers for external/historical DOI-like identifiers;
 - exact EPrints current-user write allowlist;
+- fail-closed web write gate: Staff Screen is preview-only by default;
+- explicit `web_writes_enabled = 1` required in addition to the user allowlist;
 - one write request, no automatic retry;
 - authenticated GET after every write;
 - semantic comparison for modern records;
@@ -52,7 +54,10 @@ cfg/lang/en/phrases/datacite_rest.xml
 5. Store the repository API key in a protected external file; never in Git.
 6. Adapt the metadata mapping to the repository schema.
 7. Run `epadmin test <archive>` and validate generated XML against DataCite 4.7.
-8. Test CLI write denial before exposing web write actions.
+8. Keep `web_writes_enabled = 0` and test CLI write denial plus Staff Screen
+   preflight/preview actions.
+9. Enable `web_writes_enabled = 1` only after read-only validation, and only
+   for the explicitly configured `write_userids`.
 
 See `docs/SECURITY_MODEL.md`, `docs/ARCHITECTURE.md` and
 `docs/VALIDATION.md` before enabling writes.
