@@ -9,6 +9,8 @@ Before a stable release, test on a non-production EPrints archive.
 - CLI write call => `BLOCK_UNAUTHORISED_USER`;
 - missing or false `web_writes_enabled` => all Staff Screen write actions denied;
 - preflight and preview actions remain usable while web writes are disabled;
+- preview-only mode renders no Create Draft, Publish Findable, or URL-update
+  confirmation form;
 - `web_writes_enabled = 1` alone is insufficient without an allowed current user;
 - disallowed web user cannot write;
 - mint preview => no write;

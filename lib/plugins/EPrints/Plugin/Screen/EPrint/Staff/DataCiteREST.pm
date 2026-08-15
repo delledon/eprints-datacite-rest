@@ -364,6 +364,41 @@ sub action_datacite_prepare_draft
         $session->make_text( $text )
     );
 
+    #
+    # Preview-only mode: the verified read-only result remains
+    # visible, but no write confirmation form is rendered.
+    #
+    unless( $self->_web_writes_enabled() )
+    {
+        my $readonly_notice =
+            $frag->appendChild(
+                $session->make_element( "p" )
+            );
+
+        my $readonly_strong =
+            $readonly_notice->appendChild(
+                $session->make_element( "strong" )
+            );
+
+        $readonly_strong->appendChild(
+            $session->make_text(
+                "Web writes are disabled by configuration. "
+                . "This verified preview is read-only; "
+                . "no DataCite write action is available."
+            )
+        );
+
+        $self->{processor}->add_message(
+            "warning",
+            $frag
+        );
+
+        $self->{processor}->{screenid} =
+            "EPrint::View";
+
+        return undef;
+    }
+
     my $warning =
         $frag->appendChild(
             $session->make_element( "p" )
@@ -685,6 +720,41 @@ sub action_datacite_prepare_update_url
     $summary->appendChild(
         $session->make_text( $text )
     );
+
+    #
+    # Preview-only mode: the verified read-only result remains
+    # visible, but no write confirmation form is rendered.
+    #
+    unless( $self->_web_writes_enabled() )
+    {
+        my $readonly_notice =
+            $frag->appendChild(
+                $session->make_element( "p" )
+            );
+
+        my $readonly_strong =
+            $readonly_notice->appendChild(
+                $session->make_element( "strong" )
+            );
+
+        $readonly_strong->appendChild(
+            $session->make_text(
+                "Web writes are disabled by configuration. "
+                . "This verified preview is read-only; "
+                . "no DataCite write action is available."
+            )
+        );
+
+        $self->{processor}->add_message(
+            "warning",
+            $frag
+        );
+
+        $self->{processor}->{screenid} =
+            "EPrint::View";
+
+        return undef;
+    }
 
     my $warning =
         $frag->appendChild(
@@ -1292,6 +1362,41 @@ sub action_datacite_prepare_publish
     $summary->appendChild(
         $session->make_text( $text )
     );
+
+    #
+    # Preview-only mode: the verified read-only result remains
+    # visible, but no write confirmation form is rendered.
+    #
+    unless( $self->_web_writes_enabled() )
+    {
+        my $readonly_notice =
+            $frag->appendChild(
+                $session->make_element( "p" )
+            );
+
+        my $readonly_strong =
+            $readonly_notice->appendChild(
+                $session->make_element( "strong" )
+            );
+
+        $readonly_strong->appendChild(
+            $session->make_text(
+                "Web writes are disabled by configuration. "
+                . "This verified preview is read-only; "
+                . "no DataCite write action is available."
+            )
+        );
+
+        $self->{processor}->add_message(
+            "warning",
+            $frag
+        );
+
+        $self->{processor}->{screenid} =
+            "EPrint::View";
+
+        return undef;
+    }
 
     my $warning =
         $frag->appendChild(
