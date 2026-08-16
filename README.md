@@ -1,4 +1,5 @@
 # EPrints DataCite REST
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21961568.svg)](https://doi.org/10.5281/zenodo.21961568)
 
 A safety-focused modernization of the EPrints User Group **DataCiteDoi** plugin
 for the DataCite REST API and DataCite Metadata Schema 4.7.
@@ -80,5 +81,12 @@ release.
 
 - REST API: <https://support.datacite.org/docs/api>
 - Updating metadata: <https://support.datacite.org/docs/updating-metadata-with-the-rest-api>
+- DOI states: <https://support.datacite.org/docs/doi-states>
+- Metadata Schema 4.7: <https://schema.datacite.org/meta/kernel-4.7/>
+
+## Citation
+
+Delle Donne, R. (2026). *EPrints DataCite REST* (Version v0.1.0-alpha)
+[Computer software]. Zenodo. https://doi.org/10.5281/zenodo.21961568
 - DOI states: <https://support.datacite.org/docs/doi-states>
 - Metadata Schema 4.7: <https://schema.datacite.org/meta/kernel-4.7/>
